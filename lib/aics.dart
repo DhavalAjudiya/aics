@@ -25,6 +25,7 @@ class _AicsState extends State<Aics> {
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         ),
         appBarTheme: const AppBarTheme(
+          color: AppColor.themColor,
           titleTextStyle: TextStyle(
             fontSize: 16,
             letterSpacing: 1,

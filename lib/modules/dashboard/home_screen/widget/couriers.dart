@@ -1,5 +1,7 @@
 import 'package:aics/theam/app_color.dart';
 import 'package:aics/theam/image.dart';
+import 'package:aics/utils/navigation_utils/navigation.dart';
+import 'package:aics/utils/navigation_utils/routes.dart';
 import 'package:aics/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -15,12 +17,34 @@ class Courires extends StatelessWidget {
           child: ListView.separated(
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              return _Couriers(
-                image: AppImage.fedex,
-                name: "Roop Milan",
-                country: "London",
-                position: "On Hold",
-                code: "Tr-3000121",
+              return InkWell(
+                onTap: () {
+                  Navigation.pushNamed(
+                    Routes.couriesDetailes,
+                    arg: [
+                      {"image": AppImage.fedex},
+                      {
+                        "name": "Roop Milan",
+                      },
+                      {
+                        "country": "London",
+                      },
+                      {
+                        "position": "On Hold",
+                      },
+                      {
+                        "code": "Tr-3000121",
+                      },
+                    ],
+                  );
+                },
+                child: _Couriers(
+                  image: AppImage.fedex,
+                  name: "Roop Milan",
+                  country: "London",
+                  position: "On Hold",
+                  code: "Tr-3000121",
+                ),
               );
             },
             separatorBuilder: (BuildContext context, int j) {

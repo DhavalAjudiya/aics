@@ -5,6 +5,7 @@ class AppImage {
   static const fedex = imageRoot + "fedex.png";
   static const world = imageRoot + "world.png";
   static const rupee = imageRoot + "rupee.png";
+  static const google = imageRoot + "google.png";
 }
 
 class AppIcon {
@@ -14,4 +15,5 @@ class AppIcon {
   static const book = iconRoot + "book.png";
   static const lo = iconRoot + "lo.png";
   static const ai = iconRoot + "ai.png";
+  static const logout = iconRoot + "logout.png";
 }

@@ -8,6 +8,7 @@ class CustomText extends StatelessWidget {
   final double? wordSpacing;
   final double? letterSpacing;
   final FontStyle? fontStyle;
+  final List<Shadow>? shadows;
 
   const CustomText({
     Key? key,
@@ -18,6 +19,7 @@ class CustomText extends StatelessWidget {
     this.wordSpacing,
     this.letterSpacing,
     this.fontStyle,
+    this.shadows,
   }) : super(key: key);
 
   @override
@@ -31,6 +33,7 @@ class CustomText extends StatelessWidget {
         fontWeight: fontWeight,
         wordSpacing: wordSpacing,
         letterSpacing: letterSpacing,
+        shadows: shadows,
       ),
     );
   }

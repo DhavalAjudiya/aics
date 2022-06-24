@@ -7,6 +7,7 @@ class AppString {
   static const mobileAuth = "Mobile No.";
   static const mobileAuthHint = "Enter Mobile Number";
   static const otpButton = "REQUEST OTP";
+  static const googleSingIg = "Google SingIn";
   static const crateProfile = "CREATE PROFILE";
   static const continueAsGuest = "CONTINUE AS GUEST";
 

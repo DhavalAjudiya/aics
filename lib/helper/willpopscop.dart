@@ -15,20 +15,20 @@ class ExitUtils {
         now.difference(currentBackPressTime) > const Duration(seconds: 2)) {
       Fluttertoast.showToast(
           msg: 'Click exit again',
-          toastLength: Toast.LENGTH_SHORT,
+          toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
           backgroundColor: AppColor.themColor,
-          textColor: AppColor.themColor,
+          textColor: AppColor.whiteColor,
           fontSize: 16.0);
       currentBackPressTime = now;
-      return Future.value(false);
+      return Future.value(true);
     }
 
-    return Future.value(true);
+    return Future.value(false);
   }
 
-  Future<bool> onWillPopScope(context) async {
+  Future<bool> exit(context) async {
     final value = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(

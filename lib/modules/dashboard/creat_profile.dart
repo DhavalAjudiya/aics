@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:aics/helper/willpopscop.dart';
 import 'package:aics/theam/app_color.dart';
 import 'package:aics/theam/app_string.dart';
 import 'package:aics/theam/image.dart';
@@ -12,37 +15,42 @@ class CrateProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Image.asset(
-            AppImage.aicsLogoAuth,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
-            child: CustomButton(
-              text: AppString.crateProfile,
-              fontSize: 16.sp,
-              color: AppColor.whiteColor,
-              fontWeight: FontWeight.w600,
-              onTap: () {
-                Navigation.pushNamed(Routes.createCompanyProfile);
-              },
+    return WillPopScope(
+      onWillPop: () {
+        exit(0);
+      },
+      child: Scaffold(
+        body: Column(
+          children: [
+            Image.asset(
+              AppImage.aicsLogoAuth,
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
-            child: CustomButton(
-              text: AppString.continueAsGuest,
-              fontSize: 16.sp,
-              color: AppColor.whiteColor,
-              fontWeight: FontWeight.w600,
-              onTap: () {
-                Navigation.pushNamed(Routes.homeScreen);
-              },
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+              child: CustomButton(
+                text: AppString.crateProfile,
+                fontSize: 16.sp,
+                color: AppColor.whiteColor,
+                fontWeight: FontWeight.w600,
+                onTap: () {
+                  Navigation.pushNamed(Routes.createCompanyProfile);
+                },
+              ),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+              child: CustomButton(
+                text: AppString.continueAsGuest,
+                fontSize: 16.sp,
+                color: AppColor.whiteColor,
+                fontWeight: FontWeight.w600,
+                onTap: () {
+                  Navigation.pushNamed(Routes.homeScreen);
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

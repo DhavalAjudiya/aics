@@ -23,6 +23,7 @@ class CommonTextField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final TextInputAction? textInputAction;
   List<TextInputFormatter>? inputFormatters;
+  final Widget? icon;
 
   CommonTextField({
     Key? key,
@@ -46,6 +47,7 @@ class CommonTextField extends StatelessWidget {
     this.autoValidateMode,
     this.contentPadding,
     this.textInputAction,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -67,6 +69,7 @@ class CommonTextField extends StatelessWidget {
         fontFamily: fontFamily,
       ),
       decoration: InputDecoration(
+        icon: icon,
         contentPadding: contentPadding,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),

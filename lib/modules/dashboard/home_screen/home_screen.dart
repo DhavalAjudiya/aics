@@ -4,14 +4,31 @@ import 'package:aics/modules/dashboard/home_screen/widget/couriers.dart';
 import 'package:aics/modules/dashboard/home_screen/widget/rate.dart';
 import 'package:aics/theam/app_color.dart';
 import 'package:aics/theam/image.dart';
+import 'package:aics/utils/navigation_utils/navigation.dart';
+import 'package:aics/utils/navigation_utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sizer/sizer.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final HomeController homeController = Get.put(HomeController());
+
   final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ],
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -42,18 +59,22 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(
+            onPressed: () {
+              Navigation.pushNamed(Routes.searchPage);
+            },
+            icon: Icon(
               Icons.search,
-              size: 25,
+              size: 7.5.w,
               color: Colors.white,
             ),
           ),
           IconButton(
-            onPressed: () {},
-            icon: const Icon(
+            onPressed: () {
+              Navigation.pushNamed(Routes.notificationPage);
+            },
+            icon: Icon(
               Icons.notifications_none_outlined,
-              size: 25,
+              size: 7.5.w,
               color: Colors.white,
             ),
           ),
@@ -122,12 +143,16 @@ class HomeScreen extends StatelessWidget {
                   _drawerItem(
                     text: "My Profile",
                     image: AppIcon.profile,
-                    onTap: () {},
+                    onTap: () {
+                      Navigation.pushNamed(Routes.createCompanyProfile);
+                    },
                   ),
                   _drawerItem(
-                    text: "My Consigness",
+                    text: "My Consignees",
                     image: AppIcon.con,
-                    onTap: () {},
+                    onTap: () {
+                      Navigation.pushNamed(Routes.myConsignes);
+                    },
                   ),
                   _drawerItem(
                     text: "My Booking",
@@ -143,6 +168,20 @@ class HomeScreen extends StatelessWidget {
                     text: "AICS",
                     image: AppIcon.ai,
                     onTap: () {},
+                  ),
+                  _drawerItem(
+                    text: "SingOut",
+                    image: AppIcon.logout,
+                    onTap: () async {
+                      try {
+                        final result = await _googleSignIn.signOut();
+                        print('-------1111--result ---${result}');
+                        // setState(() {});
+                        Navigation.popupUtil(Routes.mobileAuth);
+                      } catch (error) {
+                        print("errorrr----$error");
+                      }
+                    },
                   ),
                 ],
               ),
@@ -164,7 +203,7 @@ class HomeScreen extends StatelessWidget {
         onTap: onTap,
         child: Row(
           children: [
-            Image.asset(image, width: 10.w),
+            Image.asset(image, width: 9.w),
             SizedBox(width: 5.w),
             Text(
               text,
